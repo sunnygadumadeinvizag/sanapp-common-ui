@@ -7,6 +7,8 @@ export type AppEntry = {
   name: string;
   description?: string | null;
   url: string;
+  /** Category the super admin assigned (e.g. Finance, ESTB, Admin). */
+  category?: string | null;
   /** Whether the application should open in a new tab (set by the super admin in Main). */
   openInNewTab?: boolean;
 };
@@ -70,7 +72,13 @@ export function AppsMenu({
                 {a.name}
                 {a.openInNewTab ? " ↗" : ""}
               </div>
-              {a.description && <div className="iipe-dropdown-meta">{a.description}</div>}
+              {(a.category || a.description) && (
+                <div className="iipe-dropdown-meta">
+                  {a.category ? <span className="iipe-badge">{a.category}</span> : null}
+                  {a.category && a.description ? " — " : ""}
+                  {a.description}
+                </div>
+              )}
             </a>
           ))
         )}
