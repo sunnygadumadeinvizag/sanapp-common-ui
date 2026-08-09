@@ -11,6 +11,13 @@ export type PlatformNavOptions = {
   homeLabel?: string;
   /** Which item is highlighted on the current page. */
   active?: PlatformSection;
+  /**
+   * True on pages shown to users who are NOT signed in (login, forgot/reset
+   * password, access denied). Auth-gated links (My Apps / Applications /
+   * My Account) are hidden; only the home item is kept so the header still
+   * carries the IIPE branding without dead-end links.
+   */
+  signedOut?: boolean;
 };
 
 /**
@@ -29,7 +36,11 @@ export function getPlatformNav({
   ssoBaseUrl,
   homeLabel = "Home",
   active,
+  signedOut = false,
 }: PlatformNavOptions): NavItem[] {
+  if (signedOut) {
+    return [{ label: homeLabel, href: "/", active: false }];
+  }
   return [
     { label: homeLabel, href: "/", active: active === "home" },
     { label: "My Apps", href: `${mainBaseUrl}/my-apps`, active: active === "my-apps" },
