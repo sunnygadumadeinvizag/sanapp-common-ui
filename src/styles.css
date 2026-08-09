@@ -6,8 +6,8 @@
 
 :root {
   --iipe-primary: #0b5d4f;
-  --iipe-primary-dark: #08463c;
-  --iipe-primary-light: #e7f1ee;
+  --iipe-primary-dark: color-mix(in srgb, var(--iipe-primary) 82%, #000);
+  --iipe-primary-light: color-mix(in srgb, var(--iipe-primary) 12%, #fff);
   --iipe-accent: #d9a441;
   --iipe-bg: #f4f6f5;
   --iipe-surface: #ffffff;
@@ -15,30 +15,35 @@
   --iipe-muted: #5f6f6b;
   --iipe-border: #dde5e2;
   --iipe-danger: #b3261e;
-  --iipe-danger-light: #fdecea;
+  --iipe-danger-light: color-mix(in srgb, var(--iipe-danger) 10%, #fff);
   --iipe-success: #1b7f4d;
-  --iipe-success-light: #e8f6ee;
+  --iipe-success-light: color-mix(in srgb, var(--iipe-success) 12%, #fff);
   --iipe-info: #1a5d8f;
-  --iipe-info-light: #e8f1f8;
+  --iipe-info-light: color-mix(in srgb, var(--iipe-info) 12%, #fff);
   --iipe-warning: #9a6b00;
-  --iipe-warning-light: #fdf3dd;
+  --iipe-warning-light: color-mix(in srgb, var(--iipe-warning) 14%, #fff);
   --iipe-radius: 8px;
   --iipe-shadow: 0 1px 3px rgba(16, 40, 34, 0.1);
   --iipe-header-height: 60px;
+  color-scheme: light;
 }
 
+/* Dark theme — set on <html data-theme="dark"> by the theme toggle /
+   bootstrap script. The brand tints follow --iipe-primary, so admin-chosen
+   colors keep working in dark mode too. */
 [data-theme="dark"] {
   --iipe-bg: #101614;
   --iipe-surface: #1a231f;
   --iipe-text: #e8efec;
   --iipe-muted: #9aa8a3;
   --iipe-border: #2c3a35;
-  --iipe-primary-light: #10382f;
-  --iipe-danger-light: #3a1c19;
-  --iipe-success-light: #14301f;
-  --iipe-info-light: #142d40;
-  --iipe-warning-light: #33290f;
+  --iipe-primary-light: color-mix(in srgb, var(--iipe-primary) 26%, #101614);
+  --iipe-danger-light: color-mix(in srgb, var(--iipe-danger) 22%, #101614);
+  --iipe-success-light: color-mix(in srgb, var(--iipe-success) 20%, #101614);
+  --iipe-info-light: color-mix(in srgb, var(--iipe-info) 20%, #101614);
+  --iipe-warning-light: color-mix(in srgb, var(--iipe-warning) 22%, #101614);
   --iipe-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
 }
 
 * {
@@ -158,6 +163,26 @@ a:hover {
   background: rgba(255, 255, 255, 0.18);
   opacity: 1;
   font-weight: 600;
+}
+
+/* ---------- Theme toggle (light / dark / system) ---------- */
+.iipe-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.iipe-theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.24);
 }
 
 /* ---------- Sidebar ---------- */
@@ -626,6 +651,9 @@ a:hover {
     width: 30px;
     height: 30px;
     font-size: 0.75rem;
+  }
+  .iipe-theme-toggle-label {
+    display: none;
   }
   .iipe-modal-overlay {
     align-items: flex-end;

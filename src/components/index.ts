@@ -5,6 +5,7 @@ export { Breadcrumb, type Crumb } from "./Breadcrumb";
 export { UserMenu, type UserMenuProps } from "./UserMenu";
 export { Notifications, type Notification } from "./Notifications";
 export { ThemeToggle } from "./ThemeToggle";
+export { ThemeScript, type ThemeScriptProps } from "./ThemeScript";
 export { Header, type HeaderProps } from "./Header";
 export { Footer, type FooterLink } from "./Footer";
 export { PageShell, type PageShellProps } from "./PageShell";

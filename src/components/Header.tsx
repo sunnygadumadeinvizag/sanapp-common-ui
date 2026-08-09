@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Logo } from "./Logo";
 import { Navbar, type NavItem } from "./Navbar";
+import { ThemeToggle } from "./ThemeToggle";
 
 export type HeaderProps = {
   navItems?: NavItem[];
@@ -14,7 +15,10 @@ export function Header({ navItems = [], right, logoHref }: HeaderProps) {
       <div className="iipe-topbar-inner">
         <Logo href={logoHref ?? "/"} />
         <Navbar items={navItems} />
-        {right && <div className="iipe-row">{right}</div>}
+        <div className="iipe-row">
+          <ThemeToggle />
+          {right && <>{right}</>}
+        </div>
       </div>
     </header>
   );
