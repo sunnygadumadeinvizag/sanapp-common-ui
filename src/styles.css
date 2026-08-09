@@ -83,7 +83,10 @@ a:hover {
 }
 
 .iipe-container {
-  max-width: 1280px;
+  /* body is a flex column; an explicit width (not just max-width) keeps this
+     from collapsing to content width when its auto margins center it. */
+  width: 100%;
+  max-width: 1920px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -99,7 +102,6 @@ a:hover {
   box-shadow: var(--iipe-shadow);
 }
 .iipe-topbar-inner {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
   height: 100%;
@@ -363,7 +365,6 @@ a:hover {
   padding: 0;
 }
 .iipe-footer-grid {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 30px 20px 22px;
   display: grid;
@@ -429,7 +430,6 @@ a:hover {
 }
 .iipe-footer-bottom > span {
   display: block;
-  max-width: 1280px;
   margin: 0 auto;
   padding: 12px 20px;
   font-size: 0.78rem;
