@@ -24,7 +24,7 @@ export function UserMenu({ name, email, role, signOutHref, children }: UserMenuP
     <details className="iipe-user-menu">
       <summary>
         <span className="iipe-user-avatar">{initials(name) || "?"}</span>
-        <span>{name.split(" ")[0]}</span>
+        <span className="iipe-user-name">{name.split(" ")[0]}</span>
       </summary>
       <div className="iipe-dropdown">
         <div className="iipe-dropdown-header">

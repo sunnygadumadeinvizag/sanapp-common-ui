@@ -99,6 +99,7 @@ a:hover {
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
 .iipe-logo-mark {
   width: 34px;
@@ -184,6 +185,7 @@ a:hover {
 /* ---------- User menu ---------- */
 .iipe-user-menu {
   position: relative;
+  flex-shrink: 0;
 }
 .iipe-user-menu > summary {
   list-style: none;
@@ -459,6 +461,10 @@ a:hover {
 .iipe-table tr:last-child td {
   border-bottom: none;
 }
+.iipe-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
 /* ---------- Badges / alerts ---------- */
 .iipe-badge {
@@ -512,17 +518,117 @@ a:hover {
   flex: 1;
 }
 
+/* ---------- Modal ---------- */
+.iipe-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+}
+.iipe-modal {
+  background: var(--iipe-surface);
+  border-radius: var(--iipe-radius);
+  padding: 20px;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 720px) {
+  .iipe-container {
+    padding: 0 12px;
+  }
   .iipe-shell {
     flex-direction: column;
+    gap: 14px;
+    margin: 18px 0;
   }
   .iipe-sidebar {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px;
+  }
+  .iipe-sidebar-item {
+    padding: 6px 10px;
+    font-size: 0.85rem;
   }
   .iipe-topbar-inner {
-    gap: 12px;
+    gap: 10px;
+    padding: 0 10px;
+  }
+  .iipe-nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .iipe-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .iipe-nav-item {
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .iipe-logo-text {
     display: none;
+  }
+  .iipe-user-name {
+    display: none;
+  }
+  .iipe-card {
+    padding: 14px;
+  }
+  .iipe-page-title {
+    font-size: 1.25rem;
+    margin: 18px 0 6px;
+  }
+  .iipe-dropdown {
+    position: fixed;
+    right: 10px;
+    left: 10px;
+    top: calc(var(--iipe-header-height) + 8px);
+  }
+  .iipe-footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .iipe-topbar-inner {
+    gap: 8px;
+    padding: 0 8px;
+  }
+  .iipe-logo-mark {
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+  }
+  .iipe-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .iipe-modal {
+    max-width: 100%;
+    border-radius: 14px 14px 0 0;
+    max-height: 85vh;
+  }
+  .iipe-form-actions {
+    flex-direction: column-reverse;
+  }
+  .iipe-form-actions .iipe-btn {
+    justify-content: center;
+    width: 100%;
+  }
+  .iipe-row .iipe-btn {
+    flex-shrink: 0;
   }
 }
