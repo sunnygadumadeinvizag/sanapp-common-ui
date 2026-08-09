@@ -121,17 +121,12 @@ a:hover {
   letter-spacing: 0.02em;
   flex-shrink: 0;
 }
-.iipe-logo-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: var(--iipe-accent);
-  color: var(--iipe-primary-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.85rem;
+/* The IIPE institute logo (transparent PNG) — sits on the colored header. */
+.iipe-logo-img {
+  height: 38px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
 }
 .iipe-logo-sub {
   display: block;
@@ -647,10 +642,8 @@ a:hover {
     gap: 8px;
     padding: 0 8px;
   }
-  .iipe-logo-mark {
-    width: 30px;
-    height: 30px;
-    font-size: 0.75rem;
+  .iipe-logo-img {
+    height: 32px;
   }
   .iipe-theme-toggle-label {
     display: none;
