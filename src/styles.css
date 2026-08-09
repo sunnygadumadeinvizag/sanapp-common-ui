@@ -129,6 +129,11 @@ a:hover {
   width: auto;
   flex-shrink: 0;
   display: block;
+  /* The emblem is a transparent PNG — show it on a white rounded chip like
+     the iipe.ac.in header/footer instead of floating on the brand color. */
+  background: #fff;
+  border-radius: 8px;
+  padding: 3px;
 }
 .iipe-logo-sub {
   display: block;
@@ -380,6 +385,9 @@ a:hover {
   height: 64px;
   width: auto;
   flex-shrink: 0;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px;
 }
 .iipe-footer-institute {
   font-weight: 800;
