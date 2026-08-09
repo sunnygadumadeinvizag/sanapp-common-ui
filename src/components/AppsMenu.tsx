@@ -7,6 +7,8 @@ export type AppEntry = {
   name: string;
   description?: string | null;
   url: string;
+  /** Whether the application should open in a new tab (set by the super admin in Main). */
+  openInNewTab?: boolean;
 };
 
 /**
@@ -58,8 +60,16 @@ export function AppsMenu({
           </div>
         ) : (
           apps.map((a) => (
-            <a key={a.clientId} href={a.url}>
-              <div style={{ fontWeight: 600 }}>{a.name}</div>
+            <a
+              key={a.clientId}
+              href={a.url}
+              target={a.openInNewTab ? "_blank" : "_self"}
+              rel={a.openInNewTab ? "noreferrer" : undefined}
+            >
+              <div style={{ fontWeight: 600 }}>
+                {a.name}
+                {a.openInNewTab ? " ↗" : ""}
+              </div>
               {a.description && <div className="iipe-dropdown-meta">{a.description}</div>}
             </a>
           ))
