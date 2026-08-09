@@ -7,6 +7,8 @@ export type UserMenuProps = {
   email?: string;
   role?: string;
   signOutHref: string;
+  /** Absolute URL of the user's profile picture (from the SSO). */
+  avatarUrl?: string;
   children?: ReactNode;
 };
 
@@ -19,11 +21,28 @@ function initials(name: string) {
     .join("");
 }
 
-export function UserMenu({ name, email, role, signOutHref, children }: UserMenuProps) {
+export function UserMenu({
+  name,
+  email,
+  role,
+  signOutHref,
+  avatarUrl,
+  children,
+}: UserMenuProps) {
   return (
     <details className="iipe-user-menu">
       <summary>
-        <span className="iipe-user-avatar">{initials(name) || "?"}</span>
+        {avatarUrl ? (
+          <img
+            className="iipe-user-avatar-img"
+            src={avatarUrl}
+            alt=""
+            width={26}
+            height={26}
+          />
+        ) : (
+          <span className="iipe-user-avatar">{initials(name) || "?"}</span>
+        )}
         <span className="iipe-user-name">{name.split(" ")[0]}</span>
       </summary>
       <div className="iipe-dropdown">

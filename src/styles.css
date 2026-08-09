@@ -239,6 +239,15 @@ a:hover {
 .iipe-user-menu[open] > summary {
   background: rgba(255, 255, 255, 0.2);
 }
+/* Profile picture (from the SSO) — replaces the initials badge when present. */
+.iipe-user-avatar-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
 .iipe-user-avatar {
   width: 26px;
   height: 26px;
