@@ -12,7 +12,10 @@ export function Footer({
   return (
     <footer className="iipe-footer">
       <div className="iipe-footer-inner">
-        <span>
+        {/* suppressHydrationWarning: the year is computed from the clock at
+            render time and can differ between the server and the client
+            (timezones / year boundaries), which is a known hydration case. */}
+        <span suppressHydrationWarning>
           © {year} {note}
         </span>
         {links.length > 0 && (
