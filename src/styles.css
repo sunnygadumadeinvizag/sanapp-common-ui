@@ -1,0 +1,528 @@
+/* ============================================================
+   IIPE Common UI — design system
+   Shared by iipe-sso, iipe-main and all independent apps.
+   Import once per application:  import "iipe-common-ui/styles.css"
+   ============================================================ */
+
+:root {
+  --iipe-primary: #0b5d4f;
+  --iipe-primary-dark: #08463c;
+  --iipe-primary-light: #e7f1ee;
+  --iipe-accent: #d9a441;
+  --iipe-bg: #f4f6f5;
+  --iipe-surface: #ffffff;
+  --iipe-text: #1c2b28;
+  --iipe-muted: #5f6f6b;
+  --iipe-border: #dde5e2;
+  --iipe-danger: #b3261e;
+  --iipe-danger-light: #fdecea;
+  --iipe-success: #1b7f4d;
+  --iipe-success-light: #e8f6ee;
+  --iipe-info: #1a5d8f;
+  --iipe-info-light: #e8f1f8;
+  --iipe-warning: #9a6b00;
+  --iipe-warning-light: #fdf3dd;
+  --iipe-radius: 8px;
+  --iipe-shadow: 0 1px 3px rgba(16, 40, 34, 0.1);
+  --iipe-header-height: 60px;
+}
+
+[data-theme="dark"] {
+  --iipe-bg: #101614;
+  --iipe-surface: #1a231f;
+  --iipe-text: #e8efec;
+  --iipe-muted: #9aa8a3;
+  --iipe-border: #2c3a35;
+  --iipe-primary-light: #10382f;
+  --iipe-danger-light: #3a1c19;
+  --iipe-success-light: #14301f;
+  --iipe-info-light: #142d40;
+  --iipe-warning-light: #33290f;
+  --iipe-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: var(--iipe-bg);
+  color: var(--iipe-text);
+  line-height: 1.55;
+}
+
+a {
+  color: var(--iipe-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.iipe-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Header ---------- */
+.iipe-topbar {
+  background: var(--iipe-primary);
+  color: #fff;
+  height: var(--iipe-header-height);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--iipe-shadow);
+}
+.iipe-topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.iipe-topbar a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.iipe-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+.iipe-logo-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--iipe-accent);
+  color: var(--iipe-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.iipe-logo-sub {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+/* ---------- Nav ---------- */
+.iipe-nav {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+.iipe-nav-item {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.iipe-nav-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  opacity: 1;
+}
+.iipe-nav-item.active {
+  background: rgba(255, 255, 255, 0.18);
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* ---------- Sidebar ---------- */
+.iipe-shell {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin: 28px 0;
+}
+.iipe-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--iipe-surface);
+  border: 1px solid var(--iipe-border);
+  border-radius: var(--iipe-radius);
+  padding: 10px;
+  box-shadow: var(--iipe-shadow);
+}
+.iipe-sidebar-item {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  color: var(--iipe-text);
+}
+.iipe-sidebar-item:hover {
+  background: var(--iipe-primary-light);
+  text-decoration: none;
+}
+.iipe-sidebar-item.active {
+  background: var(--iipe-primary);
+  color: #fff;
+  font-weight: 600;
+}
+.iipe-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- User menu ---------- */
+.iipe-user-menu {
+  position: relative;
+}
+.iipe-user-menu > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.85rem;
+}
+.iipe-user-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.iipe-user-menu[open] > summary {
+  background: rgba(255, 255, 255, 0.2);
+}
+.iipe-user-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--iipe-accent);
+  color: var(--iipe-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+.iipe-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 230px;
+  background: var(--iipe-surface);
+  color: var(--iipe-text);
+  border: 1px solid var(--iipe-border);
+  border-radius: var(--iipe-radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  z-index: 60;
+}
+.iipe-dropdown-header {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--iipe-border);
+  margin-bottom: 6px;
+}
+.iipe-dropdown-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.iipe-dropdown-meta {
+  font-size: 0.78rem;
+  color: var(--iipe-muted);
+}
+.iipe-dropdown a,
+.iipe-dropdown button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  background: none;
+  border: none;
+  color: var(--iipe-text);
+  cursor: pointer;
+}
+.iipe-dropdown a:hover,
+.iipe-dropdown button:hover {
+  background: var(--iipe-primary-light);
+  text-decoration: none;
+}
+.iipe-dropdown .iipe-danger-link {
+  color: var(--iipe-danger);
+}
+
+/* ---------- Notifications ---------- */
+.iipe-notif {
+  position: relative;
+}
+.iipe-notif > summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.9rem;
+}
+.iipe-notif > summary::-webkit-details-marker {
+  display: none;
+}
+.iipe-notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--iipe-danger);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  padding: 1px 5px;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ---------- Breadcrumb ---------- */
+.iipe-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--iipe-muted);
+  margin: 18px 0 14px;
+}
+.iipe-breadcrumb a {
+  color: var(--iipe-primary);
+}
+.iipe-breadcrumb-sep {
+  opacity: 0.5;
+}
+
+/* ---------- Footer ---------- */
+.iipe-footer {
+  border-top: 1px solid var(--iipe-border);
+  background: var(--iipe-surface);
+  padding: 18px 20px;
+  margin-top: auto;
+}
+.iipe-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--iipe-muted);
+  flex-wrap: wrap;
+}
+.iipe-footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+/* ---------- Cards & layout ---------- */
+.iipe-card {
+  background: var(--iipe-surface);
+  border: 1px solid var(--iipe-border);
+  border-radius: var(--iipe-radius);
+  padding: 20px;
+  box-shadow: var(--iipe-shadow);
+  margin-bottom: 18px;
+}
+.iipe-card h2,
+.iipe-card h3 {
+  margin-top: 0;
+}
+.iipe-grid {
+  display: grid;
+  gap: 18px;
+}
+.iipe-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.iipe-page-title {
+  margin: 26px 0 6px;
+  font-size: 1.5rem;
+}
+.iipe-page-sub {
+  color: var(--iipe-muted);
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Buttons & forms ---------- */
+.iipe-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--iipe-primary);
+  color: #fff;
+  text-decoration: none;
+}
+.iipe-btn:hover {
+  background: var(--iipe-primary-dark);
+  text-decoration: none;
+}
+.iipe-btn.secondary {
+  background: var(--iipe-surface);
+  color: var(--iipe-text);
+  border-color: var(--iipe-border);
+}
+.iipe-btn.secondary:hover {
+  background: var(--iipe-primary-light);
+}
+.iipe-btn.danger {
+  background: var(--iipe-danger);
+}
+.iipe-btn.danger:hover {
+  filter: brightness(0.9);
+}
+.iipe-btn.ghost {
+  background: none;
+  color: var(--iipe-primary);
+}
+.iipe-btn.ghost:hover {
+  background: var(--iipe-primary-light);
+}
+.iipe-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.iipe-field {
+  margin-bottom: 14px;
+}
+.iipe-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.iipe-input,
+.iipe-select,
+.iipe-textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--iipe-border);
+  border-radius: 6px;
+  font-size: 0.92rem;
+  background: var(--iipe-surface);
+  color: var(--iipe-text);
+}
+.iipe-input:focus,
+.iipe-select:focus,
+.iipe-textarea:focus {
+  outline: 2px solid var(--iipe-primary);
+  outline-offset: -1px;
+}
+.iipe-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* ---------- Table ---------- */
+.iipe-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.iipe-table th,
+.iipe-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--iipe-border);
+}
+.iipe-table th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--iipe-muted);
+}
+.iipe-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- Badges / alerts ---------- */
+.iipe-badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: var(--iipe-primary-light);
+  color: var(--iipe-primary);
+}
+.iipe-badge.accent {
+  background: var(--iipe-warning-light);
+  color: var(--iipe-warning);
+}
+.iipe-badge.danger {
+  background: var(--iipe-danger-light);
+  color: var(--iipe-danger);
+}
+
+.iipe-alert {
+  padding: 12px 16px;
+  border-radius: var(--iipe-radius);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  border: 1px solid var(--iipe-border);
+  background: var(--iipe-info-light);
+  color: var(--iipe-info);
+}
+.iipe-alert.success {
+  background: var(--iipe-success-light);
+  color: var(--iipe-success);
+}
+.iipe-alert.danger {
+  background: var(--iipe-danger-light);
+  color: var(--iipe-danger);
+}
+
+.iipe-muted {
+  color: var(--iipe-muted);
+  font-size: 0.85rem;
+}
+.iipe-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.iipe-spacer {
+  flex: 1;
+}
+
+@media (max-width: 720px) {
+  .iipe-shell {
+    flex-direction: column;
+  }
+  .iipe-sidebar {
+    width: 100%;
+  }
+  .iipe-topbar-inner {
+    gap: 12px;
+  }
+  .iipe-logo-text {
+    display: none;
+  }
+}
