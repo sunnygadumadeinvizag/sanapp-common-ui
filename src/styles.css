@@ -52,6 +52,21 @@ body {
   background: var(--iipe-bg);
   color: var(--iipe-text);
   line-height: 1.55;
+  /* Fill the viewport so the header stays on top, the footer is pinned to the
+     bottom, and centered pages (login, access-denied) fill the space between. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Full-height centered content between the header and footer
+   (used by access-denied and the SSO auth pages). */
+.iipe-center-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
 }
 
 a {
