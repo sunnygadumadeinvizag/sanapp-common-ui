@@ -1,4 +1,5 @@
 "use client";
+import { apiPath } from "../lib/api";
 
 import { useEffect, useRef } from "react";
 
@@ -78,7 +79,7 @@ export function SessionGuard({
       const now = Date.now();
       if (now - lastKeepalive.current >= keepaliveMs) {
         lastKeepalive.current = now;
-        fetch("/api/session/keepalive", { method: "POST", credentials: "same-origin" })
+        fetch(apiPath("/api/session/keepalive"), { method: "POST", credentials: "same-origin" })
           .then((r) => {
             if (r.status === 401) doLogout("expired");
           })
@@ -117,7 +118,7 @@ export function SessionGuard({
     }, 15000);
 
     const statusTimer = window.setInterval(() => {
-      fetch("/api/session/status", { credentials: "same-origin" })
+      fetch(apiPath("/api/session/status"), { credentials: "same-origin" })
         .then((r) => (r.ok ? r.json() : { valid: false }))
         .then((data) => {
           if (data && data.valid === false) doLogout("session-ended");

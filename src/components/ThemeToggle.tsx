@@ -1,4 +1,5 @@
 "use client";
+import { apiPath } from "../lib/api";
 
 import { useEffect, useState } from "react";
 
@@ -39,7 +40,7 @@ export function ThemeToggle() {
     apply(initial);
 
     // Apply admin brand colors (mode comes from the bootstrap script already).
-    fetch("/api/theme")
+    fetch(apiPath("/api/theme"))
       .then((r) => (r.ok ? r.json() : null))
       .then((t: { primary?: string; accent?: string } | null) => {
         if (!t) return;

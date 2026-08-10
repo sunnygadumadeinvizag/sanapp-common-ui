@@ -1,4 +1,5 @@
 "use client";
+import { apiPath } from "../lib/api";
 
 import { useEffect, useState } from "react";
 
@@ -30,7 +31,7 @@ export function AppsMenu({
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/my-apps", { credentials: "same-origin" })
+    fetch(apiPath("/api/my-apps"), { credentials: "same-origin" })
       .then((r) => (r.ok ? r.json() : { apps: [] }))
       .then((data) => {
         if (!cancelled) setApps(Array.isArray(data.apps) ? data.apps : []);
