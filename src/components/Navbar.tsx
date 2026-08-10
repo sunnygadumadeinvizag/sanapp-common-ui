@@ -1,3 +1,4 @@
+import { apiPath } from "../lib/api";
 export type NavItem = {
   label: string;
   href: string;
@@ -11,7 +12,7 @@ export function Navbar({ items }: { items: NavItem[] }) {
       {items.map((item) => (
         <a
           key={item.href}
-          href={item.href}
+          href={apiPath(item.href)}
           className={`iipe-nav-item${item.active ? " active" : ""}`}
           aria-current={item.active ? "page" : undefined}
         >

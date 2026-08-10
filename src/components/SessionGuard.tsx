@@ -71,7 +71,7 @@ export function SessionGuard({
       broadcast("logout");
       const current = window.location.pathname + window.location.search;
       const q = new URLSearchParams({ returnTo: current });
-      window.location.assign(`${logoutPath}?${q.toString()}`);
+      window.location.assign(`${apiPath(logoutPath)}?${q.toString()}`);
     }
 
     function onActivity() {

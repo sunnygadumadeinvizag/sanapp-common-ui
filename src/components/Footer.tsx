@@ -57,7 +57,7 @@ export function Footer({
             <h4>Quick Links</h4>
             <div className="iipe-footer-links">
               {links.map((l) => (
-                <a key={l.href} href={l.href}>
+                <a key={l.href} href={apiPath(l.href)}>
                   {l.label}
                 </a>
               ))}

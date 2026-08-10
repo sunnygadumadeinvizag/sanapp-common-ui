@@ -1,3 +1,4 @@
+import { apiPath } from "../lib/api";
 export type Crumb = { label: string; href?: string };
 
 export function Breadcrumb({ items }: { items: Crumb[] }) {
@@ -9,7 +10,7 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
         return (
           <span key={i} style={{ display: "contents" }}>
             {item.href && !last ? (
-              <a href={item.href}>{item.label}</a>
+              <a href={apiPath(item.href)}>{item.label}</a>
             ) : (
               <span aria-current={last ? "page" : undefined}>{item.label}</span>
             )}

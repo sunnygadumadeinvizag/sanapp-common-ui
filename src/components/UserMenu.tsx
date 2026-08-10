@@ -1,3 +1,4 @@
+import { apiPath } from "../lib/api";
 "use client";
 
 import type { ReactNode } from "react";
@@ -52,7 +53,7 @@ export function UserMenu({
           {email && <div className="iipe-dropdown-meta">{email}</div>}
         </div>
         {children}
-        <a className="iipe-danger-link" href={signOutHref}>
+        <a className="iipe-danger-link" href={apiPath(signOutHref)}>
           Sign out
         </a>
       </div>
