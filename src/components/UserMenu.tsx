@@ -1,5 +1,5 @@
-import { apiPath } from "../lib/api";
 "use client";
+import { apiPath } from "../lib/api";
 
 import type { ReactNode } from "react";
 
