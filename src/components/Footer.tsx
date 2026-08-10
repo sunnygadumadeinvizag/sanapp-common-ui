@@ -1,3 +1,4 @@
+import { apiPath } from "../lib/api";
 export type FooterLink = { label: string; href: string };
 
 export function Footer({
@@ -15,7 +16,7 @@ export function Footer({
         <div className="iipe-footer-brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/img/iipe-logo.png"
+            src={apiPath("/img/iipe-logo.png")}
             alt="IIPE logo"
             className="iipe-footer-logo"
           />
