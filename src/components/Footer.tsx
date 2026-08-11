@@ -30,6 +30,9 @@ export function Footer({
             <div className="iipe-footer-native">
               भारतीय पेट्रोलियम और ऊर्जा संस्थान
             </div>
+            <div className="iipe-footer-tagline">
+              (An Institute of National Importance by an Act of Parliament)
+            </div>
           </div>
         </div>
 
@@ -38,9 +41,6 @@ export function Footer({
           <div>Indian Institute of Petroleum &amp; Energy (IIPE)</div>
           <div>Vangali, Sabbavaram</div>
           <div>Distt. Anakapalli, Andhra Pradesh – 531035</div>
-          <div className="iipe-footer-tagline">
-            (An Institute of National Importance by an Act of Parliament)
-          </div>
         </div>
 
         <div className="iipe-footer-block">
