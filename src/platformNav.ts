@@ -26,10 +26,10 @@ export type PlatformNavOptions = {
  *
  * - "Home" — the current application's own dashboard (`/` on its own origin).
  * - "My Apps" / "Applications" — the central launcher and registry in iipe-main.
- * - "My Account" — the identity page in the SSO.
  *
  * Apps render exactly this menu so users always see the same navigation,
- * wherever they are. Application-specific pages go in the sidebar instead.
+ * wherever they are. "My Account" is available from the profile dropdown in
+ * every app; application-specific pages go in the sidebar instead.
  */
 export function getPlatformNav({
   mainBaseUrl,
@@ -41,10 +41,12 @@ export function getPlatformNav({
   if (signedOut) {
     return [{ label: homeLabel, href: "/", active: false }];
   }
+  // "My Account" intentionally lives only in the profile dropdown (UserMenu),
+  // never in the top navigation bar — every app sharing common-ui shows the
+  // exact same menu: Home · My Apps · Applications.
   return [
     { label: homeLabel, href: "/", active: active === "home" },
     { label: "My Apps", href: `${mainBaseUrl}/my-apps`, active: active === "my-apps" },
     { label: "Applications", href: `${mainBaseUrl}/applications`, active: active === "applications" },
-    { label: "My Account", href: `${ssoBaseUrl}/account`, active: active === "account" },
   ];
 }

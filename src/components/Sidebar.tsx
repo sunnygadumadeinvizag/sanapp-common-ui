@@ -9,7 +9,7 @@ export function Sidebar({ items }: { items: NavItem[] }) {
         <a
           key={item.href}
           href={apiPath(item.href)}
-          className={`iipe-sidebar-item${item.active ? " active" : ""}`}
+          className={`iipe-sidebar-item${item.active ? " active" : ""}${item.heading ? " iipe-sidebar-heading" : ""}`}
           aria-current={item.active ? "page" : undefined}
         >
           {item.label}

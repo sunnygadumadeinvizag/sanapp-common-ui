@@ -219,6 +219,20 @@ a:hover {
   color: #fff;
   font-weight: 600;
 }
+.iipe-sidebar-heading {
+  display: block;
+  padding: 8px 12px 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--iipe-muted);
+}
+.iipe-sidebar-heading:hover {
+  color: var(--iipe-primary);
+  background: none;
+  text-decoration: none;
+}
 .iipe-content {
   flex: 1;
   min-width: 0;
