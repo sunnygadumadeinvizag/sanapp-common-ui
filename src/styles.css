@@ -4,6 +4,12 @@
    Import once per application:  import "iipe-common-ui/styles.css"
    ============================================================ */
 
+/* Cascade-layer order: utilities must beat components/base so shadcn/Tailwind
+   utility classes (e.g. text-primary-foreground on Button asChild links) win
+   over this file's global rules. This statement locks the order no matter
+   how/when the app imports this stylesheet. */
+@layer theme, base, components, utilities;
+
 :root {
   --iipe-primary: #0b5d4f;
   --iipe-primary-dark: color-mix(in srgb, var(--iipe-primary) 82%, #000);
@@ -74,12 +80,14 @@ body {
   padding: 32px 24px;
 }
 
-a {
-  color: var(--iipe-primary);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+@layer components {
+  a {
+    color: var(--iipe-primary);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .iipe-container {
