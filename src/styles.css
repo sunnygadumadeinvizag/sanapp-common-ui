@@ -210,6 +210,78 @@ body {
   border-radius: var(--iipe-radius);
   padding: 10px;
   box-shadow: var(--iipe-shadow);
+  transition: width 0.18s ease;
+}
+.iipe-sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 5px 0;
+  border: 1px solid var(--iipe-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--iipe-muted);
+  cursor: pointer;
+}
+.iipe-sidebar-toggle:hover {
+  background: var(--iipe-primary-light);
+  color: var(--iipe-primary);
+}
+/* Expanded mode: glyphs are hidden, plain labels as before */
+.iipe-sidebar-glyph {
+  display: none;
+}
+/* Collapsed: narrow icon rail with initials + tooltips */
+.iipe-sidebar.collapsed {
+  width: 54px;
+  padding: 10px 6px;
+}
+.iipe-sidebar.collapsed .iipe-sidebar-toggle {
+  width: 100%;
+  padding: 4px 0;
+}
+.iipe-sidebar.collapsed .iipe-sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 0;
+}
+.iipe-sidebar.collapsed .iipe-sidebar-label {
+  display: none;
+}
+.iipe-sidebar.collapsed .iipe-sidebar-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--iipe-primary);
+  background: var(--iipe-primary-light);
+}
+.iipe-sidebar.collapsed .iipe-sidebar-item:hover .iipe-sidebar-glyph {
+  background: color-mix(in srgb, var(--iipe-primary) 22%, #fff);
+}
+.iipe-sidebar.collapsed .iipe-sidebar-item.active .iipe-sidebar-glyph {
+  background: var(--iipe-primary);
+  color: #fff;
+}
+/* Headings collapse to a thin divider */
+.iipe-sidebar.collapsed .iipe-sidebar-heading {
+  height: 1px;
+  margin: 9px 4px;
+  padding: 0;
+  overflow: hidden;
+  text-indent: -9999px;
+  background: var(--iipe-border);
+  border-radius: 0;
+}
+.iipe-sidebar.collapsed .iipe-sidebar-heading:hover {
+  background: var(--iipe-border);
 }
 .iipe-sidebar-item {
   display: block;
@@ -700,6 +772,21 @@ body {
     flex-wrap: wrap;
     gap: 4px;
     padding: 8px;
+  }
+  .iipe-sidebar-toggle {
+    display: none;
+  }
+  .iipe-sidebar.collapsed .iipe-sidebar-item,
+  .iipe-sidebar.collapsed .iipe-sidebar-label,
+  .iipe-sidebar.collapsed .iipe-sidebar-glyph {
+    display: revert;
+  }
+  .iipe-sidebar.collapsed .iipe-sidebar-heading {
+    height: auto;
+    margin: 0;
+    padding: 6px 10px;
+    text-indent: 0;
+    background: none;
   }
   .iipe-sidebar-item {
     padding: 6px 10px;
