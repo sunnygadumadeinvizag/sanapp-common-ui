@@ -1,4 +1,5 @@
 import type { NavItem } from "./components/Navbar";
+import { apiPath } from "./lib/api";
 
 export type PlatformSection = "home" | "my-apps" | "applications" | "account";
 
@@ -44,9 +45,16 @@ export function getPlatformNav({
   // "My Account" intentionally lives only in the profile dropdown (UserMenu),
   // never in the top navigation bar — every app sharing common-ui shows the
   // exact same menu: Home · My Apps · Applications.
+  //
+  // The My Apps link carries ?from=<this app's base path> so iipe-main can
+  // mark the app the user is currently on with a "You are here" indicator.
+  const from = apiPath("/");
+  const myAppsHref = from && from !== "/"
+    ? `${mainBaseUrl}/my-apps?from=${encodeURIComponent(from)}`
+    : `${mainBaseUrl}/my-apps`;
   return [
     { label: homeLabel, href: "/", active: active === "home" },
-    { label: "My Apps", href: `${mainBaseUrl}/my-apps`, active: active === "my-apps" },
+    { label: "My Apps", href: myAppsHref, active: active === "my-apps" },
     { label: "Applications", href: `${mainBaseUrl}/applications`, active: active === "applications" },
   ];
 }
