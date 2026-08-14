@@ -1,7 +1,7 @@
 /* ============================================================
    IIPE Common UI — design system
-   Shared by iipe-sso, iipe-main and all independent apps.
-   Import once per application:  import "iipe-common-ui/styles.css"
+   Shared by sanapp-sso, sanapp-main and all independent apps.
+   Import once per application:  import "sanapp-common-ui/styles.css"
    ============================================================ */
 
 /* Cascade-layer order: utilities must beat components/base so shadcn/Tailwind

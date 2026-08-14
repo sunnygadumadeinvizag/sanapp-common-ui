@@ -1,5 +1,5 @@
 {
-  "name": "iipe-common-ui",
+  "name": "sanapp-common-ui",
   "version": "0.1.0",
   "description": "Shared IIPE branding and UI components for the IIPE intranet platform (SSO, Main, and independent applications).",
   "private": true,
@@ -23,5 +23,5 @@
   "devDependencies": {
     "typescript": "^5"
   },
-  "author": "Mr. Sanyasi Naidu Paila - EMPID: NTS1023"
+  "author": "Sanyasi Naidu Paila"
 }

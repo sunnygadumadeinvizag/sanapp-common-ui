@@ -4,7 +4,7 @@ import { apiPath } from "./lib/api";
 export type PlatformSection = "home" | "my-apps" | "applications" | "account";
 
 export type PlatformNavOptions = {
-  /** Public URL of iipe-main (for My Apps / Applications). */
+  /** Public URL of sanapp-main (for My Apps / Applications). */
   mainBaseUrl: string;
   /** Public URL of the central SSO (for My Account). */
   ssoBaseUrl: string;
@@ -23,10 +23,10 @@ export type PlatformNavOptions = {
 
 /**
  * The canonical navigation shown in EVERY IIPE application's header (Main, the
- * SSO account page, and every independent app that consumes iipe-common-ui).
+ * SSO account page, and every independent app that consumes sanapp-common-ui).
  *
  * - "Home" — the current application's own dashboard (`/` on its own origin).
- * - "My Apps" / "Applications" — the central launcher and registry in iipe-main.
+ * - "My Apps" / "Applications" — the central launcher and registry in sanapp-main.
  *
  * Apps render exactly this menu so users always see the same navigation,
  * wherever they are. "My Account" is available from the profile dropdown in
@@ -46,7 +46,7 @@ export function getPlatformNav({
   // never in the top navigation bar — every app sharing common-ui shows the
   // exact same menu: Home · My Apps · Applications.
   //
-  // The My Apps link carries ?from=<this app's base path> so iipe-main can
+  // The My Apps link carries ?from=<this app's base path> so sanapp-main can
   // mark the app the user is currently on with a "You are here" indicator.
   const from = apiPath("/");
   const myAppsHref = from && from !== "/"

@@ -1,6 +1,6 @@
 /**
  * Resolves the current application's registry name (as configured by the super
- * admin in iipe-main's Applications registry) from the app's own base path.
+ * admin in sanapp-main's Applications registry) from the app's own base path.
  *
  * One project can host several apps: the same Next.js codebase may be deployed
  * at two different base paths (e.g. /logrequest and /app-a), each registered as
@@ -13,7 +13,7 @@
  */
 
 type LookupOptions = {
-  /** Public URL of iipe-main (e.g. http://localhost:3001). */
+  /** Public URL of sanapp-main (e.g. http://localhost:3001). */
   mainBaseUrl: string;
   /** Shared server-to-server key (MAIN_API_KEY) used to authenticate to Main. */
   appKey?: string;
