@@ -789,6 +789,38 @@ body {
 }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .iipe-topbar-inner {
+    gap: 12px;
+    padding: 0 12px;
+  }
+  .iipe-nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .iipe-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .iipe-nav-item {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .iipe-logo-text {
+    display: none;
+  }
+  .iipe-user-name {
+    display: none;
+  }
+  .iipe-shell {
+    gap: 16px;
+  }
+  .iipe-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+}
+
 @media (max-width: 720px) {
   .iipe-container {
     padding: 0 12px;
