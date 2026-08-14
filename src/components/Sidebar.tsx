@@ -35,7 +35,7 @@ function Chevron({ dir }: { dir: "left" | "right" }) {
   );
 }
 
-export function Sidebar({ items }: { items: NavItem[] }) {
+export function Sidebar({ items, appName }: { items: NavItem[]; appName?: string }) {
   const [collapsed, setCollapsed] = useState(false);
 
   // Hydration-safe: start expanded, then restore the stored preference.
@@ -75,6 +75,12 @@ export function Sidebar({ items }: { items: NavItem[] }) {
       >
         <Chevron dir={collapsed ? "right" : "left"} />
       </button>
+      {appName && (
+        <div className="iipe-sidebar-app" title={appName}>
+          <span className="iipe-sidebar-glyph">{initials(appName)}</span>
+          <span className="iipe-sidebar-label">{appName}</span>
+        </div>
+      )}
       {items.map((item) => (
         <a
           key={item.href}
