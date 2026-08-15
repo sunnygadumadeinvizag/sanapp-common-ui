@@ -45,7 +45,7 @@ export function Footer({
 
         <div className="iipe-footer-block">
           <h4>Contact</h4>
-          <div>support@iipe.ac.in</div>
+          <div>support.erp@iipe.ac.in</div>
           <div className="iipe-footer-credit">
             Designed &amp; Developed by{" "}
             <span className="iipe-footer-credit-name">Sanyasi Naidu Paila</span>
