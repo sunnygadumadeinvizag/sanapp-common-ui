@@ -569,6 +569,21 @@ body {
   opacity: 0.85;
   font-size: 0.78rem;
 }
+/* The developer's name is hidden by default and revealed on hover,
+   so the credit line stays clean while remaining attributable. */
+.iipe-footer-credit-name {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  vertical-align: bottom;
+  transition: max-width 0.25s ease, opacity 0.25s ease;
+}
+.iipe-footer-credit:hover .iipe-footer-credit-name {
+  max-width: 180px;
+  opacity: 1;
+}
 .iipe-footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
