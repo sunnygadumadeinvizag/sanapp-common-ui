@@ -1,5 +1,5 @@
 "use client";
-import { apiPath } from "../lib/api";
+import { apiPath, appUrl } from "../lib/api";
 
 import { useEffect, useState } from "react";
 
@@ -65,7 +65,7 @@ export function AppsMenu({
           apps.map((a) => (
             <a
               key={a.clientId}
-              href={a.url}
+              href={appUrl(a.url)}
               target={a.openInNewTab ? "_blank" : "_self"}
               rel={a.openInNewTab ? "noreferrer" : undefined}
             >
