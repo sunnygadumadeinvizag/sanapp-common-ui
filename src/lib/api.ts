@@ -24,7 +24,7 @@ export function apiPath(p: string): string {
 const DEV_APP_PORTS: Record<string, number> = {
   "/sso": 3000,
   "/main": 3001,
-  "/app1": 3002,
+  "/wikidocs": 3002,
   "/app2": 3003,
   "/app3": 3004,
   "/facilities": 3005,
