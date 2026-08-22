@@ -1160,24 +1160,69 @@ img, video, canvas, svg {
 @media (max-width: 480px) {
   .iipe-topbar-inner {
     gap: 4px;
-    padding: 0 6px;
+    padding: 0 8px;
+    justify-content: space-between;
   }
-  .iipe-theme-toggle {
-    padding: 4px 8px;
-    font-size: 0.78rem;
-  }
-  .iipe-nav-item {
-    padding: 5px 7px;
-    font-size: 0.8rem;
+  .iipe-logo {
+    gap: 6px;
   }
   .iipe-logo-img {
-    height: 30px;
+    height: 28px;
+    padding: 2px;
+  }
+  .iipe-theme-toggle {
+    padding: 4px 6px;
+    font-size: 0.76rem;
+  }
+  .iipe-nav-item {
+    padding: 4px 6px;
+    font-size: 0.78rem;
   }
   .iipe-app-badge {
     display: none;
   }
   .iipe-apps-label {
     display: none;
+  }
+  .iipe-row {
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+  .iipe-row .iipe-btn {
+    padding: 4px 8px;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+  .iipe-user-btn {
+    padding: 4px 6px;
+  }
+  .iipe-footer {
+    padding-top: 0;
+  }
+  .iipe-footer-grid {
+    padding: 18px 10px 14px;
+    gap: 14px;
+  }
+  .iipe-footer-logo {
+    height: 48px;
+  }
+  .iipe-footer-institute {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  .iipe-footer-native {
+    font-size: 0.76rem;
+  }
+  .iipe-footer-tagline {
+    font-size: 0.72rem;
+  }
+  .iipe-footer-bottom {
+    padding: 10px 8px;
+  }
+  .iipe-footer-bottom > span {
+    font-size: 0.72rem;
+    line-height: 1.5;
+    word-break: break-word;
   }
   .iipe-modal-overlay {
     align-items: flex-end;
@@ -1194,8 +1239,5 @@ img, video, canvas, svg {
   .iipe-form-actions .iipe-btn {
     justify-content: center;
     width: 100%;
-  }
-  .iipe-row .iipe-btn {
-    flex-shrink: 0;
   }
 }
