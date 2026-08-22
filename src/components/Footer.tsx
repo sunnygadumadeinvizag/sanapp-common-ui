@@ -46,10 +46,6 @@ export function Footer({
         <div className="iipe-footer-block">
           <h4>Contact</h4>
           <div>support.erp@iipe.ac.in</div>
-          <div className="iipe-footer-credit">
-            Designed &amp; Developed by{" "}
-            <span className="iipe-footer-credit-name">Sanyasi Naidu Paila</span>
-          </div>
         </div>
 
         {links.length > 0 && (
@@ -67,10 +63,13 @@ export function Footer({
       </div>
 
       <div className="iipe-footer-bottom">
-        {/* suppressHydrationWarning: the year is computed from the clock at
+        {/*suppressHydrationWarning: the year is computed from the clock at
             render time and can differ between the server and the client
-            (timezones / year boundaries), which is a known hydration case. */}
-        <span suppressHydrationWarning>© {year} {note}</span>
+            (timezones / year boundaries), which is a known hydration case.*/}
+        <span suppressHydrationWarning>
+          © {year} {note} · Designed &amp; Developed by{" "}
+          <span className="iipe-footer-credit-name">Sanyasi Naidu Paila</span>
+        </span>
       </div>
     </footer>
   );
