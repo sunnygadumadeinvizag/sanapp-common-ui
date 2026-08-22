@@ -451,11 +451,86 @@ body {
   color: var(--iipe-muted);
 }
 
-/* ---------- Apps launcher dropdown (category submenus + favourites) ---------- */
+/* ---------- Apps launcher dropdown (search + category submenus + favourites) ---------- */
 .iipe-apps-menu .iipe-dropdown {
   min-width: 300px;
   max-height: min(70vh, 560px);
   overflow-y: auto;
+}
+.iipe-apps-search {
+  padding: 2px 2px 8px;
+}
+.iipe-apps-search .iipe-input {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+.iipe-apps-viewtoggle {
+  display: flex;
+  gap: 4px;
+  padding: 0 2px 8px;
+  border-bottom: 1px solid var(--iipe-border);
+  margin-bottom: 4px;
+}
+.iipe-apps-viewtoggle button {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border: 1px solid var(--iipe-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--iipe-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.iipe-apps-viewtoggle button:hover {
+  color: var(--iipe-primary);
+  border-color: var(--iipe-primary);
+}
+.iipe-apps-viewtoggle button.on {
+  background: var(--iipe-primary-light);
+  color: var(--iipe-primary);
+  border-color: var(--iipe-primary);
+}
+/* Collapsible category sub-dropdown ("By category" view) */
+.iipe-apps-submenu > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--iipe-text);
+}
+.iipe-apps-submenu > summary::-webkit-details-marker {
+  display: none;
+}
+.iipe-apps-submenu > summary:hover {
+  background: var(--iipe-primary-light);
+}
+.iipe-apps-submenu-name {
+  flex: 1;
+  min-width: 0;
+}
+.iipe-apps-submenu[open] > summary {
+  color: var(--iipe-primary);
+}
+.iipe-apps-submenu[open] > summary svg {
+  transform: rotate(90deg);
+}
+.iipe-apps-submenu > summary svg {
+  transition: transform 0.12s ease;
+  color: var(--iipe-muted);
+}
+.iipe-apps-submenu-items {
+  padding-left: 8px;
 }
 .iipe-apps-row {
   display: flex;
