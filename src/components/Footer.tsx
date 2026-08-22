@@ -67,8 +67,16 @@ export function Footer({
             render time and can differ between the server and the client
             (timezones / year boundaries), which is a known hydration case.*/}
         <span suppressHydrationWarning>
-          © {year} {note} · Designed &amp; Developed by{" "}
-          <span className="iipe-footer-credit-name">Sanyasi Naidu Paila</span>
+          © {year} {note} ·{" "}
+          {/* Hovering exactly this credit phrase reveals the developer's name. */}
+          <span
+            className="iipe-footer-credit"
+            title="Designed & Developed by Sanyasi Naidu Paila"
+            tabIndex={0}
+          >
+            Designed &amp; Developed by{" "}
+            <span className="iipe-footer-credit-name">Sanyasi Naidu Paila</span>
+          </span>
         </span>
       </div>
     </footer>

@@ -68,6 +68,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* "clip" (not hidden) so position:sticky header keeps working while no
+     stray wide element can force sideways scrolling on phones. */
+  overflow-x: clip;
 }
 
 /* Full-height centered content between the header and footer
@@ -728,9 +731,12 @@ body {
   margin-top: 8px;
   opacity: 0.85;
   font-size: 0.78rem;
+  cursor: default;
 }
-/* The developer's name is hidden by default and revealed on hover,
-   so the credit line stays clean while remaining attributable. */
+/* The developer's name is hidden by default and revealed ONLY while the
+   mouse hovers the "Designed & Developed by" phrase itself (not the whole
+   footer line), so the credit stays clean while remaining attributable.
+   It sits INLINE right after "... · Designed & Developed by". */
 .iipe-footer-credit-name {
   display: inline-block;
   max-width: 0;
@@ -738,10 +744,25 @@ body {
   white-space: nowrap;
   opacity: 0;
   vertical-align: bottom;
-  transition: max-width 0.25s ease, opacity 0.25s ease;
+  font-weight: 600;
+  color: #fff;
+  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
-.iipe-footer-credit:hover .iipe-footer-credit-name {
-  max-width: 180px;
+/* The credit phrase is inline inside the bottom line; keep it from picking
+   up block-level spacing from the generic .iipe-footer-credit rule. */
+.iipe-footer-bottom .iipe-footer-credit {
+  display: inline;
+  margin-top: 0;
+  font-size: inherit;
+  opacity: inherit;
+}
+.iipe-footer-bottom .iipe-footer-credit:hover,
+.iipe-footer-bottom .iipe-footer-credit:focus-visible {
+  opacity: 1;
+}
+.iipe-footer-credit:hover .iipe-footer-credit-name,
+.iipe-footer-credit:focus-within .iipe-footer-credit-name {
+  max-width: 250px;
   opacity: 1;
 }
 .iipe-footer-bottom {
@@ -797,6 +818,9 @@ body {
   border: 1px solid transparent;
   font-size: 0.88rem;
   font-weight: 600;
+  /* Buttons center their own text — don't inherit the roomy body
+     line-height (1.55), which makes single-word labels sit off-center. */
+  line-height: 1.2;
   cursor: pointer;
   background: var(--iipe-primary);
   color: #fff;
@@ -1071,10 +1095,13 @@ body {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 24px 12px 18px;
+    /* Single-column mobile footer reads best fully centered. */
+    text-align: center;
   }
   .iipe-footer-brand {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
   .iipe-footer-bottom > span {
     padding: 12px;
@@ -1084,8 +1111,15 @@ body {
 
 @media (max-width: 480px) {
   .iipe-topbar-inner {
-    gap: 8px;
+    gap: 6px;
     padding: 0 8px;
+  }
+  .iipe-theme-toggle {
+    padding: 5px 9px;
+  }
+  .iipe-nav-item {
+    padding: 6px 8px;
+    font-size: 0.85rem;
   }
   .iipe-logo-img {
     height: 32px;
