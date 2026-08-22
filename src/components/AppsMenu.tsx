@@ -1,6 +1,6 @@
 "use client";
 import { apiPath, appUrl } from "../lib/api";
-import { readFavourites, toggleFavourite } from "../lib/favourites";
+import { FAVOURITES_EVENT, readFavourites, toggleFavourite } from "../lib/favourites";
 
 import { useEffect, useMemo, useState } from "react";
 
@@ -61,8 +61,15 @@ export function AppsMenu({
         if (!cancelled) setApps([]);
       });
     setFavs(readFavourites());
+    // Live-sync with stars toggled elsewhere on the page (My Apps home) or in
+    // other tabs.
+    const refresh = () => setFavs(readFavourites());
+    window.addEventListener(FAVOURITES_EVENT, refresh);
+    window.addEventListener("storage", refresh);
     return () => {
       cancelled = true;
+      window.removeEventListener(FAVOURITES_EVENT, refresh);
+      window.removeEventListener("storage", refresh);
     };
   }, []);
 

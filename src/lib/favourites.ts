@@ -23,6 +23,15 @@ function writeFavourites(ids: string[]) {
   }
 }
 
+/** Event fired on window whenever favourites change (same-tab live sync). */
+export const FAVOURITES_EVENT = "iipe-favs-changed";
+
+function notify() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent(FAVOURITES_EVENT));
+  }
+}
+
 /** Add/remove an id. Returns the new list. */
 export function toggleFavourite(id: string): string[] {
   const next = readFavourites();
@@ -30,5 +39,6 @@ export function toggleFavourite(id: string): string[] {
   if (i >= 0) next.splice(i, 1);
   else next.push(id);
   writeFavourites(next);
+  notify();
   return next;
 }
