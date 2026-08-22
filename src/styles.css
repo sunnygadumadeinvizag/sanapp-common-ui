@@ -790,6 +790,7 @@ body {
 .iipe-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 8px 14px;
   border-radius: 6px;
