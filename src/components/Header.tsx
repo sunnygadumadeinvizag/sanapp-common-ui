@@ -12,10 +12,9 @@ export type HeaderProps = {
   /** When set, shows the shared "Apps" launcher icon before the user menu. */
   appsLauncherHref?: string;
   /**
-   * The current application's registry name (e.g. "Log Request"). Shown as a
-   * platform-standard badge so users always know which app they are on,
-   * regardless of which app they launched. Apps resolve this from the central
-   * registry when possible (one project can host several apps).
+   * The current application's registry name (e.g. "Facilities Booking").
+   * Rendered as "You are in: <name>" next to the logo so users always know
+   * where they are. Hidden inside Main (the launcher) to avoid noise.
    */
   appName?: string;
 };
@@ -25,9 +24,9 @@ export function Header({ navItems = [], right, logoHref, appsLauncherHref, appNa
     <header className="iipe-topbar">
       <div className="iipe-topbar-inner">
         <Logo href={logoHref ?? "/"} />
-        {appName && (
-          <span className="iipe-app-badge" title="Current application">
-            {appName}
+        {appName && appName !== "Main" && (
+          <span className="iipe-app-badge" title={`You are currently in ${appName}`}>
+            You are in: {appName}
           </span>
         )}
         <Navbar items={navItems} />
