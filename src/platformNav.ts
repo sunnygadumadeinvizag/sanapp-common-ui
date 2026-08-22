@@ -1,6 +1,6 @@
 import type { NavItem } from "./components/Navbar";
 
-export type PlatformSection = "home" | "my-apps" | "applications" | "account";
+export type PlatformSection = "home" | "my-apps" | "applications" | "account" | "notifications";
 
 export type PlatformNavOptions = {
   /** Public URL of sanapp-main (the app launcher home). */

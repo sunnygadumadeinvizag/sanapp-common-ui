@@ -3,6 +3,7 @@ import { Logo } from "./Logo";
 import { Navbar, type NavItem } from "./Navbar";
 import { ThemeToggle } from "./ThemeToggle";
 import { AppsMenu } from "./AppsMenu";
+import { Notifications } from "./Notifications";
 
 export type HeaderProps = {
   navItems?: NavItem[];
@@ -33,6 +34,7 @@ export function Header({ navItems = [], right, logoHref, appsLauncherHref, appNa
         <div className="iipe-row">
           <ThemeToggle />
           {appsLauncherHref && <AppsMenu launcherHref={appsLauncherHref} />}
+          <Notifications />
           {right && <>{right}</>}
         </div>
       </div>

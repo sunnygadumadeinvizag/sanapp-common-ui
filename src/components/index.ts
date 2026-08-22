@@ -3,7 +3,12 @@ export { Navbar, type NavItem } from "./Navbar";
 export { Sidebar } from "./Sidebar";
 export { Breadcrumb, type Crumb } from "./Breadcrumb";
 export { UserMenu, type UserMenuProps } from "./UserMenu";
-export { Notifications, type Notification } from "./Notifications";
+export {
+  Notifications,
+  type AppNotificationItem,
+  type AppNotificationList,
+} from "./Notifications";
+export { AppNotificationsView } from "./AppNotificationsView";
 export { ThemeToggle } from "./ThemeToggle";
 export { ThemeScript, type ThemeScriptProps } from "./ThemeScript";
 export { Header, type HeaderProps } from "./Header";

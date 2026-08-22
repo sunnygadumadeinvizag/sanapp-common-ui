@@ -508,9 +508,49 @@ body {
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.12);
   font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
 }
 .iipe-notif > summary::-webkit-details-marker {
   display: none;
+}
+.iipe-notif-menu .iipe-dropdown {
+  min-width: 320px;
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+}
+.iipe-notif-markall {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--iipe-primary);
+}
+.iipe-notif-item {
+  padding: 8px 10px !important;
+  border-radius: 6px;
+}
+.iipe-notif-item.unread {
+  background: var(--iipe-primary-light);
+}
+.iipe-notif-item.unread:hover {
+  background: color-mix(in srgb, var(--iipe-primary) 20%, transparent);
+}
+.iipe-notif-title {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.iipe-notif-item:not(.unread) .iipe-notif-title {
+  font-weight: 500;
+  color: var(--iipe-text);
+}
+.iipe-notif-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--iipe-accent);
+  flex-shrink: 0;
 }
 .iipe-notif-badge {
   position: absolute;
