@@ -729,14 +729,13 @@ body {
 }
 .iipe-footer-credit {
   margin-top: 8px;
-  opacity: 0.85;
+  opacity: 0.9;
   font-size: 0.78rem;
-  cursor: default;
+  cursor: pointer;
+  pointer-events: auto;
 }
-/* The developer's name is hidden by default and revealed ONLY while the
-   mouse hovers the "Designed & Developed by" phrase itself (not the whole
-   footer line), so the credit stays clean while remaining attributable.
-   It sits INLINE right after "... · Designed & Developed by". */
+/* The developer's name is hidden by default and revealed when hovering
+   "Designed & Developed by" or the bottom bar, or on focus/click. */
 .iipe-footer-credit-name {
   display: inline-block;
   max-width: 0;
@@ -746,24 +745,28 @@ body {
   vertical-align: bottom;
   font-weight: 600;
   color: #fff;
-  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin-left 0.25s ease;
 }
-/* The credit phrase is inline inside the bottom line; keep it from picking
-   up block-level spacing from the generic .iipe-footer-credit rule. */
+/* The credit phrase is inline-block inside the bottom line */
 .iipe-footer-bottom .iipe-footer-credit {
-  display: inline;
+  display: inline-block;
   margin-top: 0;
   font-size: inherit;
   opacity: inherit;
+  cursor: pointer;
+  pointer-events: auto;
 }
 .iipe-footer-bottom .iipe-footer-credit:hover,
-.iipe-footer-bottom .iipe-footer-credit:focus-visible {
+.iipe-footer-bottom .iipe-footer-credit:focus-visible,
+.iipe-footer-bottom .iipe-footer-credit:focus-within {
   opacity: 1;
 }
 .iipe-footer-credit:hover .iipe-footer-credit-name,
-.iipe-footer-credit:focus-within .iipe-footer-credit-name {
-  max-width: 250px;
+.iipe-footer-credit:focus-within .iipe-footer-credit-name,
+.iipe-footer-bottom:hover .iipe-footer-credit-name {
+  max-width: 300px;
   opacity: 1;
+  margin-left: 4px;
 }
 .iipe-footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.18);
