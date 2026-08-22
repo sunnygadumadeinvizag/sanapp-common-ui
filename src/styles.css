@@ -988,6 +988,30 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
+/* Responsive tables, media and pre elements */
+.iipe-table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+pre, code {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .iipe-topbar-inner {
@@ -1021,43 +1045,49 @@ body {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .iipe-container {
     padding: 0 12px;
   }
   .iipe-shell {
     flex-direction: column;
     gap: 14px;
-    margin: 18px 0;
+    margin: 16px 0;
+    width: 100%;
   }
   .iipe-sidebar {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    align-items: center;
+    gap: 6px;
     padding: 8px;
   }
   .iipe-sidebar-toggle {
     display: none;
+  }
+  .iipe-sidebar-app {
+    width: 100%;
+    margin-bottom: 4px;
+    padding: 4px 6px;
+  }
+  .iipe-sidebar-heading {
+    width: 100%;
+    padding: 6px 6px 2px;
+    font-size: 0.7rem;
   }
   .iipe-sidebar.collapsed .iipe-sidebar-item,
   .iipe-sidebar.collapsed .iipe-sidebar-label,
   .iipe-sidebar.collapsed .iipe-sidebar-glyph {
     display: revert;
   }
-  .iipe-sidebar.collapsed .iipe-sidebar-heading {
-    height: auto;
-    margin: 0;
-    padding: 6px 10px;
-    text-indent: 0;
-    background: none;
-  }
   .iipe-sidebar-item {
     padding: 6px 10px;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
+    border-radius: 6px;
   }
   .iipe-topbar-inner {
-    gap: 10px;
+    gap: 8px;
     padding: 0 10px;
   }
   .iipe-nav {
@@ -1071,10 +1101,19 @@ body {
   .iipe-nav-item {
     white-space: nowrap;
     flex-shrink: 0;
+    padding: 6px 9px;
+    font-size: 0.84rem;
   }
-  .iipe-logo-text {
-    display: none;
+  .iipe-app-badge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
+  .iipe-logo-text,
+  .iipe-logo-sub,
   .iipe-user-name {
     display: none;
   }
@@ -1083,19 +1122,26 @@ body {
   }
   .iipe-page-title {
     font-size: 1.25rem;
-    margin: 18px 0 6px;
+    margin: 16px 0 6px;
   }
   .iipe-dropdown {
     position: fixed;
-    right: 10px;
-    left: 10px;
-    top: calc(var(--iipe-header-height) + 8px);
+    right: 8px;
+    left: 8px;
+    top: calc(var(--iipe-header-height) + 6px);
+    max-width: calc(100vw - 16px);
+    width: auto;
+    z-index: 999;
+  }
+  .iipe-apps-menu .iipe-dropdown,
+  .iipe-notif-menu .iipe-dropdown {
+    min-width: unset;
+    width: auto;
   }
   .iipe-footer-grid {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 24px 12px 18px;
-    /* Single-column mobile footer reads best fully centered. */
     text-align: center;
   }
   .iipe-footer-brand {
@@ -1104,25 +1150,31 @@ body {
     text-align: center;
   }
   .iipe-footer-bottom > span {
-    padding: 12px;
+    padding: 12px 8px;
     text-align: center;
+    font-size: 0.74rem;
+    line-height: 1.6;
   }
 }
 
 @media (max-width: 480px) {
   .iipe-topbar-inner {
-    gap: 6px;
-    padding: 0 8px;
+    gap: 4px;
+    padding: 0 6px;
   }
   .iipe-theme-toggle {
-    padding: 5px 9px;
+    padding: 4px 8px;
+    font-size: 0.78rem;
   }
   .iipe-nav-item {
-    padding: 6px 8px;
-    font-size: 0.85rem;
+    padding: 5px 7px;
+    font-size: 0.8rem;
   }
   .iipe-logo-img {
-    height: 32px;
+    height: 30px;
+  }
+  .iipe-app-badge {
+    display: none;
   }
   .iipe-apps-label {
     display: none;
