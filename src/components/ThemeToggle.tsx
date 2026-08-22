@@ -76,7 +76,6 @@ export function ThemeToggle() {
       title={`Theme: ${LABELS[mode]} — click to change`}
     >
       <span aria-hidden="true">{ICONS[mode]}</span>
-      <span className="iipe-theme-toggle-label">{LABELS[mode]}</span>
     </button>
   );
 }

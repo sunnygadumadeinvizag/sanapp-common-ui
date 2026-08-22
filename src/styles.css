@@ -451,6 +451,51 @@ body {
   color: var(--iipe-muted);
 }
 
+/* ---------- Apps launcher dropdown (category submenus + favourites) ---------- */
+.iipe-apps-menu .iipe-dropdown {
+  min-width: 300px;
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+}
+.iipe-apps-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 6px;
+}
+.iipe-apps-row:hover {
+  background: var(--iipe-primary-light);
+}
+.iipe-apps-row > a {
+  flex: 1;
+  min-width: 0;
+}
+.iipe-apps-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: 6px;
+  color: var(--iipe-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.iipe-dropdown .iipe-apps-star {
+  width: 36px;
+  padding: 8px 4px;
+}
+.iipe-apps-star:hover {
+  color: var(--iipe-primary);
+}
+.iipe-apps-star.on {
+  color: #e8a300;
+}
+.iipe-apps-star.on:hover {
+  color: #c78a00;
+}
+
 /* ---------- Notifications ---------- */
 .iipe-notif {
   position: relative;
@@ -929,7 +974,7 @@ body {
   .iipe-logo-img {
     height: 32px;
   }
-  .iipe-theme-toggle-label {
+  .iipe-apps-label {
     display: none;
   }
   .iipe-modal-overlay {
