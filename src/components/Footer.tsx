@@ -3,13 +3,16 @@ export type FooterLink = { label: string; href: string };
 
 export function Footer({
   year = new Date().getFullYear(),
-  links = [],
+  links,
   note = "Indian Institute of Petroleum and Energy (IIPE), Visakhapatnam. All Rights Reserved.",
 }: {
   year?: number;
+  /** Quick Links for the 4th footer section. Falls back to the app's home
+      page so the footer always shows four filled sections. */
   links?: FooterLink[];
   note?: string;
 }) {
+  const quickLinks = links && links.length > 0 ? links : [{ label: "Home", href: "/" }];
   return (
     <footer className="iipe-footer">
       <div className="iipe-footer-grid">
@@ -48,18 +51,16 @@ export function Footer({
           <div>support.erp@iipe.ac.in</div>
         </div>
 
-        {links.length > 0 && (
-          <div className="iipe-footer-block">
-            <h4>Quick Links</h4>
-            <div className="iipe-footer-links">
-              {links.map((l) => (
-                <a key={l.href} href={apiPath(l.href)}>
-                  {l.label}
-                </a>
-              ))}
-            </div>
+        <div className="iipe-footer-block">
+          <h4>Quick Links</h4>
+          <div className="iipe-footer-links">
+            {quickLinks.map((l) => (
+              <a key={l.href} href={apiPath(l.href)}>
+                {l.label}
+              </a>
+            ))}
           </div>
-        )}
+        </div>
       </div>
 
       <div className="iipe-footer-bottom">

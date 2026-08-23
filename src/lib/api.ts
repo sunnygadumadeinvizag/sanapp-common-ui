@@ -14,22 +14,25 @@ export function apiPath(p: string): string {
   return p.startsWith(bp) ? p : bp + p;
 }
 /**
- * Local-development ports for each registered application (path -> port).
- * During `next dev` the registry URLs (intranet.iipe.ac.in/...) are rewritten
- * to the matching localhost instance so navigation stays inside the local
- * stack; production builds use the registry URL unchanged (the reverse-proxy
- * origin). Override the mapping with NEXT_PUBLIC_DEV_APP_URLS
- * (JSON object { "/path": "http://localhost:PORT/path" }).
+ * Local-development origins for each registered application (registry path ->
+ * full local base URL). During `next dev` the registry URLs
+ * (intranet.iipe.ac.in/...) are rewritten to the matching localhost instance
+ * so navigation stays inside the local stack; production builds use the
+ * registry URL unchanged (the reverse-proxy origin).
+ *
+ * Every app keeps its production basePath in local dev, so the local URL is
+ * simply the same path on the app's dev port. Override the mapping with
+ * NEXT_PUBLIC_DEV_APP_URLS (JSON object { "/path": "http://localhost:PORT/path" }).
  */
-const DEV_APP_PORTS: Record<string, number> = {
-  "/sso": 3000,
-  "/main": 3001,
-  "/wikidocs": 3002,
-  "/app2": 3003,
-  "/app3": 3004,
-  "/facilities": 3005,
-  "/logrequest": 3006,
-  "/inventory": 3007,
+const DEV_APP_URLS: Record<string, string> = {
+  "/sso": "http://localhost:3000/sso",
+  "/main": "http://localhost:3001/main",
+  "/wikidocs": "http://localhost:3002/wikidocs",
+  "/app2": "http://localhost:3003/app2",
+  "/app3": "http://localhost:3004/app3",
+  "/facilities": "http://localhost:3005/facilities",
+  "/logrequest": "http://localhost:3006/logrequest",
+  "/inventory": "http://localhost:3007/inventory",
 };
 
 function devAppUrlOverrides(): Record<string, string> | null {
@@ -46,7 +49,7 @@ function devAppUrlOverrides(): Record<string, string> | null {
 /**
  * Returns the best URL for a registered application (from Main's registry):
  * - production builds: the registry URL unchanged (served through Apache);
- * - local `next dev` runs: rewritten to the matching localhost:PORT so the
+ * - local `next dev` runs: rewritten to the matching localhost origin so the
  *   apps launcher / menu / "my apps" pages never point at the production
  *   host while developing.
  */
@@ -60,14 +63,8 @@ export function appUrl(u: string): string {
   }
   const path = parsed.pathname.replace(/\/+$/, "") || "/";
   const overrides = devAppUrlOverrides();
-  const local = overrides?.[path];
-  let base: string;
-  if (local) {
-    base = local.replace(/\/+$/, "");
-  } else {
-    const port = DEV_APP_PORTS[path];
-    if (!port) return u;
-    base = `http://localhost:${port}${path}`;
-  }
-  return base + (parsed.pathname.endsWith("/") ? "/" : "") + parsed.search + parsed.hash;
+  const local = overrides?.[path] ?? DEV_APP_URLS[path];
+  if (!local) return u;
+  const base = local.replace(/\/+$/, "");
+  return base + parsed.search + parsed.hash;
 }

@@ -64,10 +64,12 @@ body {
   color: var(--iipe-text);
   line-height: 1.55;
   /* Fill the viewport so the header stays on top, the footer is pinned to the
-     bottom, and centered pages (login, access-denied) fill the space between. */
+     bottom of the screen on large devices (short pages leave no gap), and
+     centered pages (login, access-denied) fill the space between. */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
   /* "clip" (not hidden) so position:sticky header keeps working while no
      stray wide element can force sideways scrolling on phones. */
   overflow-x: clip;
@@ -1057,6 +1059,14 @@ img, video, canvas, svg {
     gap: 14px;
     margin: 16px 0;
     width: 100%;
+    /* Column mode: stretch children to the shell width instead of
+       fit-content, so wide children (tables, pill strips) can't blow
+       the page out sideways. */
+    align-items: stretch;
+  }
+  .iipe-content {
+    width: 100%;
+    min-width: 0;
   }
   .iipe-sidebar {
     width: 100%;

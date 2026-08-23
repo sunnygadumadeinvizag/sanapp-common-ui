@@ -81,18 +81,29 @@ export function Sidebar({ items, appName }: { items: NavItem[]; appName?: string
           <span className="iipe-sidebar-label">{appName}</span>
         </div>
       )}
-      {items.map((item) => (
-        <a
-          key={item.href}
-          href={apiPath(item.href)}
-          className={`iipe-sidebar-item${item.active ? " active" : ""}${item.heading ? " iipe-sidebar-heading" : ""}`}
-          aria-current={item.active ? "page" : undefined}
-          title={collapsed && !item.heading ? item.label : undefined}
-        >
-          <span className="iipe-sidebar-glyph">{item.heading ? "" : initials(item.label)}</span>
-          <span className="iipe-sidebar-label">{item.label}</span>
-        </a>
-      ))}
+      {items.map((item) =>
+        item.href ? (
+          <a
+            key={item.label}
+            href={apiPath(item.href)}
+            className={`iipe-sidebar-item${item.active ? " active" : ""}${item.heading ? " iipe-sidebar-heading" : ""}`}
+            aria-current={item.active ? "page" : undefined}
+            title={collapsed && !item.heading ? item.label : undefined}
+          >
+            <span className="iipe-sidebar-glyph">{item.heading ? "" : initials(item.label)}</span>
+            <span className="iipe-sidebar-label">{item.label}</span>
+          </a>
+        ) : (
+          <div
+            key={item.label}
+            className={`iipe-sidebar-item iipe-sidebar-heading`}
+            aria-hidden={collapsed || undefined}
+          >
+            <span className="iipe-sidebar-glyph" />
+            <span className="iipe-sidebar-label">{item.label}</span>
+          </div>
+        )
+      )}
     </aside>
   );
 }
