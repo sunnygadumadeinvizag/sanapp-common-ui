@@ -111,22 +111,34 @@ export function SessionGuard({
     };
     window.addEventListener("storage", onStorage);
 
-    const idleTimer = window.setInterval(() => {
-      if (Date.now() - lastActivity.current >= idleTimeoutMs) {
-        doLogout("idle");
-      }
-    }, 15000);
+    const activeIdleTimeout = { current: idleTimeoutMs };
 
-    const statusTimer = window.setInterval(() => {
+    const checkStatus = () => {
       fetch(apiPath("/api/session/status"), { credentials: "same-origin" })
         .then((r) => (r.ok ? r.json() : { valid: false }))
         .then((data) => {
-          if (data && data.valid === false) doLogout("session-ended");
+          if (data && data.valid === false) {
+            doLogout("session-ended");
+          }
+          if (data && typeof data.idleTimeoutMs === "number" && data.idleTimeoutMs > 0) {
+            activeIdleTimeout.current = data.idleTimeoutMs;
+          }
         })
         .catch(() => {
           /* SSO unreachable — keep the session until it is */
         });
-    }, statusIntervalMs);
+    };
+
+    // Immediate check on mount to sync dynamic timeout and verify session
+    checkStatus();
+
+    const idleTimer = window.setInterval(() => {
+      if (Date.now() - lastActivity.current >= activeIdleTimeout.current) {
+        doLogout("idle");
+      }
+    }, 10000);
+
+    const statusTimer = window.setInterval(checkStatus, statusIntervalMs);
 
     return () => {
       events.forEach((e) => window.removeEventListener(e, handle));
