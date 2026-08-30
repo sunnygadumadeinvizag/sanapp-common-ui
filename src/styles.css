@@ -161,6 +161,17 @@ body {
   border-radius: 8px;
   padding: 3px;
 }
+.iipe-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+.iipe-logo-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.15;
+  color: #fff;
+  white-space: nowrap;
+}
 .iipe-logo-sub {
   display: block;
   font-size: 0.62rem;
@@ -168,6 +179,7 @@ body {
   letter-spacing: 0.18em;
   opacity: 0.85;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 /* ---------- Nav ---------- */
@@ -690,12 +702,20 @@ body {
   border-radius: 10px;
   padding: 6px;
 }
-.iipe-footer-institute {
+.iipe-footer-portal-title {
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 1.12rem;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.iipe-footer-institute {
+  font-weight: 700;
+  font-size: 0.88rem;
   letter-spacing: 0.03em;
   line-height: 1.35;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.95);
 }
 .iipe-footer-native {
   font-size: 0.85rem;
@@ -1035,7 +1055,11 @@ img, video, canvas, svg {
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .iipe-logo-text {
+  .iipe-logo-title {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  .iipe-logo-sub {
     display: none;
   }
   .iipe-user-name {
@@ -1125,7 +1149,10 @@ img, video, canvas, svg {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .iipe-logo-text,
+  .iipe-logo-title {
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
   .iipe-logo-sub,
   .iipe-user-name {
     display: none;
@@ -1162,6 +1189,13 @@ img, video, canvas, svg {
     align-items: center;
     text-align: center;
   }
+  .iipe-footer-portal-title {
+    font-size: 1.05rem;
+    margin-bottom: 3px;
+  }
+  .iipe-footer-institute {
+    font-size: 0.82rem;
+  }
   .iipe-footer-bottom > span {
     padding: 12px 8px;
     text-align: center;
@@ -1182,6 +1216,13 @@ img, video, canvas, svg {
   .iipe-logo-img {
     height: 28px;
     padding: 2px;
+  }
+  .iipe-logo-title {
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+  .iipe-logo-sub {
+    display: none;
   }
   .iipe-theme-toggle {
     padding: 4px 6px;
@@ -1219,15 +1260,18 @@ img, video, canvas, svg {
   .iipe-footer-logo {
     height: 48px;
   }
+  .iipe-footer-portal-title {
+    font-size: 0.98rem;
+  }
   .iipe-footer-institute {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     line-height: 1.3;
   }
   .iipe-footer-native {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
   }
   .iipe-footer-tagline {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
   .iipe-footer-bottom {
     padding: 10px 8px;

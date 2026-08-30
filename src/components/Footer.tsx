@@ -4,7 +4,7 @@ export type FooterLink = { label: string; href: string };
 export function Footer({
   year = new Date().getFullYear(),
   links,
-  note = "Indian Institute of Petroleum and Energy (IIPE), Visakhapatnam. All Rights Reserved.",
+  note = "IIPE Intranet · Indian Institute of Petroleum and Energy (IIPE), Visakhapatnam. All Rights Reserved.",
 }: {
   year?: number;
   /** Quick Links for the 4th footer section. Falls back to the app's home
@@ -24,6 +24,9 @@ export function Footer({
             className="iipe-footer-logo"
           />
           <div>
+            <div className="iipe-footer-portal-title">
+              IIPE Intranet
+            </div>
             <div className="iipe-footer-institute">
               INDIAN INSTITUTE OF PETROLEUM AND ENERGY
             </div>
