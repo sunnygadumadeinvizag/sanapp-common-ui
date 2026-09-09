@@ -46,7 +46,7 @@ export function AppNotificationsView({ appName }: { appName: string }) {
 
   async function markRead(ids: string[], all = false) {
     try {
-      await fetch(apiPath("/api/notifications/read"), {
+      await fetch(apiPath("/api/notifications"), {
         method: "POST",
         headers: { "content-type": "application/json" },
         credentials: "same-origin",

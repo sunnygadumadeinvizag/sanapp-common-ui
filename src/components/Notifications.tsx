@@ -70,7 +70,7 @@ export function Notifications() {
 
   const markRead = useCallback(async (ids: string[], all = false) => {
     try {
-      fetch(apiPath("/api/notifications/read"), {
+      fetch(apiPath("/api/notifications"), {
         method: "POST",
         headers: { "content-type": "application/json" },
         credentials: "same-origin",
