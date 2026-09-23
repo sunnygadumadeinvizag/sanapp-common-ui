@@ -74,7 +74,9 @@ export function Notifications() {
         method: "POST",
         headers: { "content-type": "application/json" },
         credentials: "same-origin",
-        body: JSON.stringify(all ? { all: true } : { ids }),
+        // scope "all": the bell is cross-app, so "mark all as read" must clear
+        // every application's notifications, not just the one hosting the bell.
+        body: JSON.stringify(all ? { all: true, scope: "all" } : { ids }),
       }).catch(() => {});
     } catch {
       /* best-effort */

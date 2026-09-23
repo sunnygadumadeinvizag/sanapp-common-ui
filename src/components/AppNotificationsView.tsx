@@ -50,7 +50,9 @@ export function AppNotificationsView({ appName }: { appName: string }) {
         method: "POST",
         headers: { "content-type": "application/json" },
         credentials: "same-origin",
-        body: JSON.stringify(all ? { all: true } : { ids }),
+        // scope "app": this page only lists THIS application's notifications,
+        // so its "mark all" must not clear other applications' rows.
+        body: JSON.stringify(all ? { all: true, scope: "app" } : { ids }),
       });
     } catch {
       /* best-effort */

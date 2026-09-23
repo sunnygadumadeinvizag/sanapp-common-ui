@@ -93,6 +93,14 @@ body {
   a:hover {
     text-decoration: underline;
   }
+  /* A link wrapping block content IS the card (request rows, launcher and
+     admin tiles). Underlining it would underline every child at once, which
+     reads as the whole card being selected — keep the pointer cursor and
+     drop the decoration instead. Text links are unaffected. */
+  a:has(> div, > p, > h1, > h2, > h3, > h4, > ul, > ol, > section),
+  a:has(> div, > p, > h1, > h2, > h3, > h4, > ul, > ol, > section):hover {
+    text-decoration: none;
+  }
 }
 
 .iipe-container {
